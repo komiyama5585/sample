@@ -30,5 +30,5 @@
         </div>
     @endforeach
 
-    <a href="/posts/create">New Post</a> 
+    <a href="sample/posts/create">New Post</a> 
 @endsection
