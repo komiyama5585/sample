@@ -14,7 +14,7 @@
 
             <div class="d-flex" style="height: 36.4px;">
                 <button class="btn btn-outline-primary">Show</button>
-                <a href="/posts/{{ $post->id }}/edit" class="btn btn-outline-primary">Edit</a>
+                <a href="/sample/posts/{{ $post->id }}/edit" class="btn btn-outline-primary">Edit</a>
                 <form action="/posts/{{ $post->id }}" method="POST" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -24,6 +24,7 @@
         </div>
     </div>
 
-    <a href="/posts/{{ $post->id }}/edit">Edit</a> | 
-    <a href="/posts">Back</a>
+    <a href="/sample/posts/{{ $post->id }}/edit">Edit</a> | 
+    <a href="/sample/posts">Back</a>
+  
 @endsection 
