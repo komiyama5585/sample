@@ -1,0 +1,53 @@
+.bg_image1 {
+    text-align:  center;    /* 文字中央寄せ */
+    padding:  100px;        /* 余白指定 */
+    border: solid 2px;      /* 枠線指定 */
+    background-image: url("../image/backgraund.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right bottom;
+}
+.bg_image2 {
+    text-align:  center;    /* 文字中央寄せ */
+    padding:  130px;        /* 余白指定 */
+    border: solid 2px;      /* 枠線指定 */
+    background-image: url("../image/backgraund2.png");  
+    
+}
+
+/*<style type="text/css">*/
+.button {
+  display      : inline-block;
+  
+  box-shadow   : 6px 6px 3px #666666;  /* 影の設定 */
+  cursor       : pointer;              /* カーソル形状 */
+  
+}
+.button:hover {
+  box-shadow   : none;                 /* 影の設定 */
+  border-radius: 0;                    /* 角丸 */
+}
+/*</style>*/
+
+/*入力フォーム　copypetから引用*/
+.cp_iptxt {
+	position: relative;
+	width: 80%;
+	margin: 40px 3%;
+}
+.cp_iptxt input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: 1px solid #ffffff;
+	box-shadow: 1px 1px 2px 0 #707070 inset;
+	border-radius: 4px;
+}
+.ef input[type='text']:focus {
+	outline: none;
+	box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
