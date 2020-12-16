@@ -45,6 +45,9 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+        $post->price = $request->input('price');
+        $post->place = $request->input('place');
+        $post->image = $request->input('image');
         $post->save();
 
         return redirect()->route('posts.show', ['id' => $post->id])->with('message', 'Post was successfully created.');

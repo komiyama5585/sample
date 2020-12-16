@@ -16,16 +16,29 @@
     </div>
 @endif
 
-<form method="POST" action="/posts">
+<form method="POST" action="/sample/posts">
     {{ csrf_field() }}
     <div class="form-group">
-        <label for="exampleInputEmail1">Title</label>
+        <label for="exampleInputEmail1">タイトル</label>
         <input type="text" class="form-control" aria-describedby="emailHelp" name="title" value="{{old('title')}}">
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Content</label>
+        <label for="exampleInputPassword1">詳細</label>
         <textarea class="form-control" name="content">{{old('content')}}</textarea>
     </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">価格</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp" name="price" value="{{old('price')}}">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">取引場所</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp" name="place" value="{{old('place')}}">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">画像</label>
+        <input type="file" class="form-control" aria-describedby="emailHelp" name="image" value="{{old('image')}}">
+    </div>
+
     <button type="submit" class="btn btn-outline-primary">Submit</button>
 </form>
 
