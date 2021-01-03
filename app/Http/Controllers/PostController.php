@@ -48,6 +48,9 @@ class PostController extends Controller
         $post->price = $request->input('price');
         $post->place = $request->input('place');
         $post->image = $request->input('image');
+         // ファイルの保存
+        $request->file('image')->storeAs('public/'.$post->id.'/',$post->image);
+        
         $post->save();
 
         return redirect()->route('posts.show', ['id' => $post->id])->with('message', 'Post was successfully created.');

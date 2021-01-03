@@ -16,7 +16,7 @@
     </div>
 @endif
 
-<form method="POST" action="/sample/posts">
+<form enctype="multipart/form-data" method="POST" action="/sample/posts">
     {{ csrf_field() }}
     <div class="form-group">
         <label for="exampleInputEmail1">タイトル</label>
@@ -39,9 +39,9 @@
         <input type="file" class="form-control" aria-describedby="emailHelp" name="image" value="{{old('image')}}">
     </div>
 
-    <button type="submit" class="btn btn-outline-primary">Submit</button>
+    <button type="submit" class="btn btn-outline-primary">投稿する</button>
 </form>
 
-<a href="/sample/posts">Back</a>
+<a href="/sample/posts">戻る</a>
 
 @endsection
