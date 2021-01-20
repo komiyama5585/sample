@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -35,24 +36,33 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         $request->validate([
            'title' => 'required',
             'content' => 'required',
         ]);
 
-        $post = new Post();
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-        $post->price = $request->input('price');
-        $post->place = $request->input('place');
-        $post->image = $request->input('image');
-         // ファイルの保存
-        $request->file('image')->storeAs('public/'.$post->id.'/',$post->image);
+         //$post = new Post();
+        // $post->title = $request->input('title');
+        // $post->content = $request->input('content');
+        // $post->price = $request->input('price');
+        // $post->place = $request->input('place');
         
-        $post->save();
+        //ファイル名の取得
+        $filename = $request->file('image')->getClientOriginalName();
 
+        // 配列にファイル名を追加
+        $storedata =  array_replace($request->all(), array('image' => $filename));
+        
+        //データの保存
+        $post->fill($storedata)->save();
+
+        
+        //ファイルの保存
+        $request->file('image')->storeAs('public/'.$post->id.'/',$filename);
+       
+       
         return redirect()->route('posts.show', ['id' => $post->id])->with('message', 'Post was successfully created.');
     }
 
@@ -93,6 +103,8 @@ class PostController extends Controller
         ]);
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+        $post->price = $request->input('price');
+        $post->place = $request->input('place');
         $post->save();
 
         return redirect()->route('posts.show', ['id' => $post->id])->with('message', 'Post was successfully updated.');

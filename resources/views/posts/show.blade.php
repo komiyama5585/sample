@@ -9,8 +9,12 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">{{ $post->title }}</h5>
-            <p class="card-text">{{ $post->content }}</p>
+            
+            <p class="card-text"><img src="{{ asset('public/storage') }}/{{ $post->id }}/{{ $post->image }}"  width="350" height="220"></p>
+                <h5 class="card-title">タイトル：{{ $post->title }}</h5>
+                <p class="card-text">詳細：{{ $post->content }}</p>
+                <p class="card-text">価格：{{ $post->price }}円</p>
+                <p class="card-text">場所：{{ $post->place }}</p>
 
             <div class="d-flex" style="height: 36.4px;">
                 <button class="btn btn-outline-primary">表示</button>
