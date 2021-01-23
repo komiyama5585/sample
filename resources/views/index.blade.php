@@ -121,10 +121,21 @@
   </div>
 
  
- @foreach($posts as $post)
- <p class="card-text"><img src="{{ asset('public/storage') }}/{{ $post->id }}/{{ $post->image }}"  width="350" height="220"></p>
-  <p class="card-text">詳細：{{ $post->content }}</p>
- @endforeach
+  @foreach($posts as $post)
+
+      <div class="card">
+          <div class="card-body">
+              
+          　　<p class="card-text"><img src="{{ asset('public/storage') }}/{{ $post->id }}/{{ $post->image }}"  width="350" height="220"></p>
+              <h5 class="card-title">タイトル：{{ $post->title }}</h5>
+              <p class="card-text">詳細：{{ $post->content }}</p>
+              <p class="card-text">価格：{{ $post->price }}円</p>
+              <p class="card-text">場所：{{ $post->place }}</p>
+
+              
+          </div>
+      </div>
+  @endforeach
 
 
   

@@ -21,6 +21,7 @@ class PostController extends Controller
 
         return view('index', compact('posts'));
 
+        
     }
 
     /**
@@ -126,4 +127,6 @@ class PostController extends Controller
 
         return redirect()->route('posts.index');
     }
+
+    
 }
