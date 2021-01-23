@@ -5,8 +5,8 @@
     <title>カルーセルテンプレート for Bootstrap · Bootstrap</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-    <link href="css/carousel.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{secure_asset('/css/carousel.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('/css/style.css')}}" rel="stylesheet">
   </head>
   <body >
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
@@ -119,6 +119,12 @@
       <img class="mw-100 mx-auto"style="width : 1200px" src="image/sub-txt-1.png" alt="Max-width 100%">
   
   </div>
+
+ 
+ @foreach($posts as $post)
+ <p class="card-text"><img src="{{ asset('public/storage') }}/{{ $post->id }}/{{ $post->image }}"  width="350" height="220"></p>
+  <p class="card-text">詳細：{{ $post->content }}</p>
+ @endforeach
 
 
   
