@@ -1,38 +1,67 @@
-@extends('layouts.layouts')
-
-@section('title', 'Simple Board')
+@extends('layouts.app')
 
 @section('content')
+<div class="container d-flex justify-content-center mt-3">
+    <div class="w-75">
+        <h1>ショッピングカート</h1>
 
-    @if (session('message'))
-        {{ session('message') }}
-    @endif
-
-    <h1>Posts</h1>
-
-    @foreach($posts as $post)
-
-        <div class="card">
-            <div class="card-body">
-                
-            　　<p class="card-text"><img src="{{ asset('public/storage') }}/{{ $post->id }}/{{ $post->image }}"  width="350" height="220"></p>
-                <h5 class="card-title">タイトル：{{ $post->title }}</h5>
-                <p class="card-text">詳細：{{ $post->content }}</p>
-                <p class="card-text">価格：{{ $post->price }}円</p>
-                <p class="card-text">場所：{{ $post->place }}</p>
-
-                <div class="d-flex" style="height: 36.4px;">
-                    <a href="/sample/posts/{{ $post->id }}" class="btn btn-outline-primary">表示</a>
-                    <a href="/sample/posts/{{ $post->id }}/edit" class="btn btn-outline-primary">編集</a>
-                    <form action="/sample/posts/{{ $post->id }}" method="POST" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="submit" class="btn btn-outline-danger">削除</button>
-                    </form>
+        <div class="row">
+            <div class="offset-8 col-4">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>数量</h2>
+                    </div>
+                    <div class="col-6">
+                        <h2>合計</h2>
+                    </div>
                 </div>
             </div>
         </div>
-    @endforeach
 
-    <a href="/sample/posts/create">新規登録</a> 
+        <hr>
+
+        <div class="row">
+            @foreach ($cart as $product)
+            <div class="col-md-2 mt-2">
+                <a href="{{route('products.show', $product->id)}}">
+                    <img src="{{ asset('img/dummy.png')}}" class="img-fuild w-100">
+                </a>
+            </div>
+            <div class="col-md-6 mt-4">
+                <h3 class="mt-4">{{$product->name}}</h3>
+            </div>
+            <div class="col-md-2">
+                <h3 class="w-100 mt-4">{{$product->qty}}</h3>
+            </div>
+            <div class="col-md-2">
+                <h3 class="w-100 mt-4">￥{{$product->qty * $product->price}}</h3>
+            </div>
+            @endforeach            
+        </div>
+
+        <hr>
+
+        <div class="offset-8 col-4">
+            <div class="row">
+                <div class="col-6">
+                    <h2>合計</h2>
+                </div>
+                <div class="col-6">
+                    <h2>￥{{$total}}</h2>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    表示価格は税込みです
+                </div>
+            </div>
+        </div>
+        <form method="post" action="{{route('carts.destroy')}}" class="d-flex justify-content-end mt-3">
+            {{ csrf_field() }}
+            <input type="hidden" name="_method" value="DELETE">
+            <a href="/" class="btn samazon-favorite-button border-dark text-dark mr-3">
+                買い物を続ける
+            </a>
+            <button type="submit" class="btn samazon-submit-button">購入を確定する</button>
+        </form>
+    </div>
+</div>
 @endsection

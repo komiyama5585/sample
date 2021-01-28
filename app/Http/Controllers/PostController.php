@@ -19,8 +19,6 @@ class PostController extends Controller
 
         return view('posts.index', compact('posts'));
 
-        return view('index', compact('posts'));
-
         
     }
 

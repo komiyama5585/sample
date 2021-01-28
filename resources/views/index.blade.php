@@ -8,7 +8,7 @@
     <link href="{{secure_asset('/css/carousel.css')}}" rel="stylesheet">
     <link href="{{secure_asset('/css/style.css')}}" rel="stylesheet">
   </head>
-  <body >
+<body >
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
      <div class="container">
       <span class="skiplink-text">Skip to main content</span>
@@ -86,7 +86,7 @@
    </nav>
   </header>
 
-  <main role="main">
+<main role="main">
    <div id="myCarousel">
     <ol class="carousel-indicators">  
     </ol>
@@ -99,16 +99,16 @@
         </div>
       </div>
     </div> 
-  </div>
+  
 
   <nav style="height: 90px" class="navbar navbar-expand-md-3 bg-warning mx-auto"width="1200" height="200">
   
     <button type="button" class="btn btn-outline-success height: 80px　">
-     <a class="nav-link" href="#">
+     <a class="nav-link" href="#"></a>
        <h5>お問い合わせフォーム</h5>
     </button>
     <button type="button" class="btn btn-outline-success height: 60px　">
-     <a class="nav-link" href="#">
+     <a class="nav-link" href="#"></a>
        <h5>電話番号</h5>
     </button>
    
@@ -121,23 +121,7 @@
   </div>
 
  
-  @foreach($posts as $post)
-
-      <div class="card">
-          <div class="card-body">
-              
-          　　<p class="card-text"><img src="{{ asset('public/storage') }}/{{ $post->id }}/{{ $post->image }}"  width="350" height="220"></p>
-              <h5 class="card-title">タイトル：{{ $post->title }}</h5>
-              <p class="card-text">詳細：{{ $post->content }}</p>
-              <p class="card-text">価格：{{ $post->price }}円</p>
-              <p class="card-text">場所：{{ $post->place }}</p>
-
-              
-          </div>
-      </div>
-  @endforeach
-
-
+ 
   
 
 
@@ -148,25 +132,19 @@
 
     <!-- Three columns of text below the carousel -->
   <div class="row">
+ 
+    @foreach($posts as $post)
       <div class="col-lg-4">
-        <img class="card md-4 shadow-sm" src="image/case1.png" alt="Generic placeholder image" width="350" height="220">
-        <img class="card md-4 shadow-sm" src="image/case1-col.png" alt="Generic placeholder image" width="350" height="220">
-        
+      
+      <button><a href="/sample/posts/{{ $post->id }}">
+      <img class="card md-4 shadow-sm" src="{{ asset('public/storage') }}/{{ $post->id }}/{{ $post->image }}" alt="Generic placeholder image" width="350" height="220">
+      </a></button>
        
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img class="card md-4 shadow-sm" src="image/case2.png" alt="Generic placeholder image" width="350" height="220">
-        <img class="card md-4 shadow-sm" src="image/case2-col.png" alt="Generic placeholder image" width="350" height="220">
-        <!-- <h2>Heading</h2> -->
-        
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img class="card md-4 shadow-sm" src="image/case3.png" alt="Generic placeholder image" width="350" height="220">
-        <img class="card md-4 shadow-sm" src="image/case3-col.png" alt="Generic placeholder image" width="350" height="220">
-        <!-- <h2>Heading</h2> -->
-        
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+    @endforeach 
+  </div>
+
+ 
 
 
     <!-- START THE FEATURETTES -->
@@ -334,5 +312,5 @@
 <script src="/docs/4.5/assets/js/src/application.js"></script>
 <script src="/docs/4.5/assets/js/src/search.js"></script>
 <script src="/docs/4.5/assets/js/src/ie-emulation-modes-warning.js"></script>
-  </body>
+</body>
 </html>
