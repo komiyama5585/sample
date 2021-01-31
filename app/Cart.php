@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    'title',
-    'content',
-    'price',
-    'place',
-    'image',
+    protected $fillable = [ 
+        'title',
+        'content',
+        'price',
+        'place',
+        'image',
+    ];
 }

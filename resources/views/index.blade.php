@@ -136,7 +136,7 @@
     @foreach($posts as $post)
       <div class="col-lg-4">
       
-      <button><a href="/sample/posts/{{ $post->id }}">
+      <button><a href="/sample/cart/{{ $post->id }}">
       <img class="card md-4 shadow-sm" src="{{ asset('public/storage') }}/{{ $post->id }}/{{ $post->image }}" alt="Generic placeholder image" width="350" height="220">
       </a></button>
        

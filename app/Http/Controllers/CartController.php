@@ -16,9 +16,11 @@ class CartController extends Controller
      */
     public function index()
     {
-        $posts = Cart::all();
+        $cart = Cart::all();
 
-        return view('cart.index', compact('cart'));
+        return view('cart.index', compact('cart'));   
+
+       
     }
 
     /**
@@ -26,10 +28,7 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -37,10 +36,18 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    
+        public function store(Product $product)
     {
-        //
+        $review = new Review();
+        $review->content = $request->input('content');
+        $review->product_id = $product->id;
+        $review->user_id = Auth::user()->id;
+        $review->save();
+
+        return redirect()->route('posts.show', $posts);
     }
+    
 
     /**
      * Display the specified resource.
@@ -59,10 +66,7 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart $cart)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -71,10 +75,7 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
-    {
-        //
-    }
+    
 
     /**
      * Remove the specified resource from storage.

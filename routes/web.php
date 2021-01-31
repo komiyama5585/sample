@@ -15,13 +15,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('users/carts', 'CartController@index')->name('carts.index');
-
-Route::post('users/carts', 'CartController@store')->name('carts.store');
-
-Route::delete('users/carts', 'CartController@destroy')->name('carts.destroy');
+Route::post('posts/{posts}/cart', 'CartController@store');
 
 Route::resource('posts', 'PostController');
+
+
+
 
 
 Auth::routes();

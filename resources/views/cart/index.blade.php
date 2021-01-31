@@ -21,22 +21,22 @@
         <hr>
 
         <div class="row">
-            @foreach ($cart as $product)
+          @foreach ($cart as $posts)
             <div class="col-md-2 mt-2">
-                <a href="{{route('products.show', $product->id)}}">
+                <a href="{{route('posts.show', $posts->id)}}">
                     <img src="{{ asset('img/dummy.png')}}" class="img-fuild w-100">
                 </a>
             </div>
             <div class="col-md-6 mt-4">
-                <h3 class="mt-4">{{$product->name}}</h3>
+                <h3 class="mt-4">{{$posts->name}}</h3>
             </div>
             <div class="col-md-2">
-                <h3 class="w-100 mt-4">{{$product->qty}}</h3>
+                <h3 class="w-100 mt-4">{{$posts->qty}}</h3>
             </div>
             <div class="col-md-2">
-                <h3 class="w-100 mt-4">￥{{$product->qty * $product->price}}</h3>
+                <h3 class="w-100 mt-4">￥{{$posts->price}}</h3>
             </div>
-            @endforeach            
+          @endforeach            
         </div>
 
         <hr>
