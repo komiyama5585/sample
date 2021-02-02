@@ -15,10 +15,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::post('posts/{posts}/cart', 'CartController@store');
+
 
 Route::resource('posts', 'PostController');
 
+Route::resource('carts', 'CartController');
 
 
 

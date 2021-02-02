@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ class CartController extends Controller
     {
         $cart = Cart::all();
 
-        return view('cart.index', compact('cart'));   
+        return view('carts.index', compact('carts'));   
 
        
     }
@@ -37,28 +38,25 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-        public function store(Product $product)
+        public function store(Cart $cart)
     {
-        $review = new Review();
-        $review->content = $request->input('content');
-        $review->product_id = $product->id;
-        $review->user_id = Auth::user()->id;
-        $review->save();
-
-        return redirect()->route('posts.show', $posts);
+        return redirect()->route('carts.show', ['id' => $post->id]);
     }
     
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cart  $cart
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show($id)
     {
-        return view('cart.show', compact('cart'));
+        $post = Post::findOrFail($id);
+
+        return view('carts.show', compact('post'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -87,6 +85,6 @@ class CartController extends Controller
     {
         $cart->delete();
 
-        return redirect()->route('cart.index');
+        return redirect()->route('carts.index');
     }
 }

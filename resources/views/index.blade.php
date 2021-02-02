@@ -133,10 +133,12 @@
     <!-- Three columns of text below the carousel -->
   <div class="row">
  
+    
+
     @foreach($posts as $post)
       <div class="col-lg-4">
       
-      <button><a href="/sample/cart/{{ $post->id }}">
+      <button><a href="/sample/posts/{{ $post->id }}">
       <img class="card md-4 shadow-sm" src="{{ asset('public/storage') }}/{{ $post->id }}/{{ $post->image }}" alt="Generic placeholder image" width="350" height="220">
       </a></button>
        

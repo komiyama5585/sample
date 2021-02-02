@@ -17,6 +17,7 @@
                 <p class="card-text">場所：{{ $post->place }}</p>
 
             <div class="d-flex" style="height: 36.4px;">
+                <a href="/sample/carts/{{ $post->id }}" class="btn btn-outline-primary">カートへ</a>
                 <button class="btn btn-outline-primary">表示</button>
                 <a href="/sample/posts/{{ $post->id }}/edit" class="btn btn-outline-primary">編集</a>
                 
