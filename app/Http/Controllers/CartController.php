@@ -38,9 +38,24 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-        public function store(Cart $cart)
+        public function store(Request $request,Cart $carts)
     {
-        return redirect()->route('carts.show', ['id' => $post->id]);
+        $carts->count = $request->input('count');
+
+        //$csum = (int) $request->input('count');
+       // $psum = (int) $request->input('price');
+
+       // dd($request->input('price'));
+       
+        $carts->price = $request->input('price')*$request->input('count');
+        
+
+        $carts->save();
+
+        
+        return redirect()->route('carts.show', ['id' => $carts->id]);
+
+        
     }
     
 
